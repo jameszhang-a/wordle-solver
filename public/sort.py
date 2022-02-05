@@ -5,5 +5,4 @@ with open("sgb-words.txt") as data:
 
     with open("5-words.txt", "w+") as f:
         for word in words:
-            f.write(word)
-            f.write("\n")
+            f.write(f"'{word}',\n")

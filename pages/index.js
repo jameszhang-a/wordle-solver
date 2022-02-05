@@ -1,9 +1,21 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import DarkSwitch from '../components/DarkSwitch';
+import Header from '../components/Header';
+import WordSearch from '../components/WordSearch';
 import styles from '../styles/Home.module.css';
+import { VALIDWORDS } from '../public/5-words';
+import WordList from '../components/WordList';
+import { useState } from 'react';
 
 export default function Home() {
+  const [ guesses, setGuesses ] = useState(VALIDWORDS);
+  const [ value, setValue ] = useState('');
+
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -12,10 +24,15 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
+      <Header />
       <main className={styles.main}>
         <h1 className={styles.title}>
           Welcome to <a href='https://nextjs.org'>Next.js!</a>
         </h1>
+
+        <div className={styles.grid}>
+          <WordSearch value={value} handleChange={handleChange} />
+        </div>
 
         <p className={styles.description}>
           Get started by editing{' '}
@@ -26,7 +43,9 @@ export default function Home() {
           <DarkSwitch />
         </p>
 
-        <div className={styles.grid}>
+        <WordList words={guesses} />
+
+        {/* <div className={styles.grid}>
           <a href='https://nextjs.org/docs' className={styles.card}>
             <h2>Documentation &rarr;</h2>
             <p>Find in-depth information about Next.js features and API.</p>
@@ -54,7 +73,7 @@ export default function Home() {
               Instantly deploy your Next.js site to a public URL with Vercel.
             </p>
           </a>
-        </div>
+        </div> */}
       </main>
 
       <footer className={styles.footer}>
