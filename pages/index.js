@@ -83,7 +83,7 @@ export default function Home() {
           <div>
             <Text mb='8px'>
               Input{' '}
-              <Text as='span' color='red.500'>
+              <Text as='span' color='gray.500'>
                 wrong
               </Text>{' '}
               letters:{' '}
