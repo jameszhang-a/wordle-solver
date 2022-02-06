@@ -39,8 +39,8 @@ export default function Home() {
 
   useEffect(
     () => {
-      const extraCharArr = [ ...extraVal ];
-      const wrongCharArr = [ ...wrongVal ];
+      const extraCharArr = [ ...extraVal.toLowerCase() ];
+      const wrongCharArr = [ ...wrongVal.toLowerCase() ];
       // need this to loop through obj using index
       const posMap = [ 'first', 'second', 'third', 'fourth', 'fifth' ];
 
@@ -49,11 +49,11 @@ export default function Home() {
           // Match positional characters first
           if (
             hasInput() &&
-            ((word[0] === inputVal[0] || inputVal[0] === '') &&
-              (word[1] === inputVal[1] || inputVal[1] === '') &&
-              (word[2] === inputVal[2] || inputVal[2] === '') &&
-              (word[3] === inputVal[3] || inputVal[3] === '') &&
-              (word[4] === inputVal[4] || inputVal[4] === ''))
+            ((word[0] === inputVal[0].toLowerCase() || inputVal[0] === '') &&
+              (word[1] === inputVal[1].toLowerCase() || inputVal[1] === '') &&
+              (word[2] === inputVal[2].toLowerCase() || inputVal[2] === '') &&
+              (word[3] === inputVal[3].toLowerCase() || inputVal[3] === '') &&
+              (word[4] === inputVal[4].toLowerCase() || inputVal[4] === ''))
           ) {
             // matching additional yellow characters
             for (const char of extraCharArr) {
@@ -67,7 +67,7 @@ export default function Home() {
 
             // For each index, make sure non match between word and wrong word
             for (let i = 0; i < 5; i++) {
-              const letters = [ ...wrongLetters[posMap[i]] ];
+              const letters = [ ...wrongLetters[posMap[i]].toLowerCase() ];
               if (letters.includes(word[i])) return false;
             }
 
