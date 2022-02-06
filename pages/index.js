@@ -1,20 +1,38 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import DarkSwitch from '../components/DarkSwitch';
 import Header from '../components/Header';
 import WordSearch from '../components/WordSearch';
 import styles from '../styles/Home.module.css';
 import { VALIDWORDS } from '../public/5-words';
+import { Heading } from '@chakra-ui/react';
 import WordList from '../components/WordList';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Home() {
   const [ guesses, setGuesses ] = useState(VALIDWORDS);
-  const [ value, setValue ] = useState('');
+  const [ value1, setValue1 ] = useState('');
+  const [ value2, setValue2 ] = useState('');
+  const [ value3, setValue3 ] = useState('');
+  const [ value4, setValue4 ] = useState('');
+  const [ value5, setValue5 ] = useState('');
 
-  const handleChange = (e) => {
-    setValue(e.target.value);
-  };
+  useEffect(
+    () => {
+      setGuesses(
+        VALIDWORDS.filter((word) => {
+          if (
+            (word[0] === value1 || value1 === '') &&
+            (word[1] === value2 || value2 === '') &&
+            (word[2] === value3 || value3 === '') &&
+            (word[3] === value4 || value4 === '') &&
+            (word[4] === value5 || value5 === '')
+          )
+            return true;
+        })
+      );
+    },
+    [ value1, value2, value3, value4, value5 ]
+  );
 
   return (
     <div className={styles.container}>
@@ -26,24 +44,31 @@ export default function Home() {
 
       <Header />
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href='https://nextjs.org'>Next.js!</a>
-        </h1>
+        <h1 className={styles.title}>Enter word below!</h1>
 
         <div className={styles.grid}>
-          <WordSearch value={value} handleChange={handleChange} />
+          <div className={styles.box}>
+            <WordSearch value={value1} setValue={setValue1} />
+          </div>
+          <div className={styles.box}>
+            <WordSearch value={value2} setValue={setValue2} />
+          </div>
+          <div className={styles.box}>
+            <WordSearch value={value3} setValue={setValue3} />
+          </div>
+          <div className={styles.box}>
+            <WordSearch value={value4} setValue={setValue4} />
+          </div>
+          <div className={styles.box}>
+            <WordSearch value={value5} setValue={setValue5} />
+          </div>
         </div>
 
         <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
+          <Heading>matches</Heading>
         </p>
 
-        <p>
-          <DarkSwitch />
-        </p>
-
-        <WordList words={guesses} />
+        <WordList words={guesses} setGuesses={setGuesses} />
 
         {/* <div className={styles.grid}>
           <a href='https://nextjs.org/docs' className={styles.card}>
