@@ -69,7 +69,7 @@ const Header = () => {
   return (
     <Flex bg='teal.400' align='center' justify='space-between' padding={4}>
       <HStack display={[ 'none', 'none', 'flex', 'flex' ]}>
-        <Heading as='h1'>Wordle Solver</Heading>
+        {/* <Heading as='h1'>Wordle Solver</Heading> */}
         <ButtonGroup>
           <Button
             as='a'

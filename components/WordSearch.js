@@ -1,27 +1,27 @@
-import { HStack, Input, PinInput, PinInputField } from '@chakra-ui/react';
+import { HStack, Input, PinInput, PinInputField, Flex } from '@chakra-ui/react';
+import styles from '../styles/Home.module.css';
 
 const WordSearch = ({ value, setValue }) => {
-  const handleChange = (e) => {
-    setValue(e);
+  const handleChange = (e, idx) => {
+    const newVal = [ ...value ];
+    newVal[idx] = e.target.value;
+    setValue(newVal);
   };
 
   return (
-    <HStack>
-      <PinInput
-        type='alphanumeric'
-        value={value}
-        onChange={handleChange}
-        manageFocus='false'
-        defaultValue='-----'
-        size='lg'
-      >
-        <PinInputField />
-        <PinInputField />
-        <PinInputField />
-        <PinInputField />
-        <PinInputField />
-      </PinInput>
-    </HStack>
+    <Flex direction='row'>
+      {value.map((val, idx) => {
+        return (
+          <Input
+            className={styles.inputBox}
+            onChange={(e) => handleChange(e, idx)}
+            value={val}
+            maxLength={1}
+            key={idx}
+          />
+        );
+      })}
+    </Flex>
   );
 };
 

@@ -2,19 +2,17 @@ import { Flex, HStack, Box, Text } from '@chakra-ui/react';
 
 const Word = ({ word }) => {
   return (
-    <HStack spacing='24px' align='center' mb='3'>
+    <HStack spacing='5px' align='center' mb='3' border='2px' rounded='md'>
       {[ ...word ].map((char, idx) => {
         return (
           <Box
             key={`${word}-${idx}`}
-            minW='60px'
+            minW='30px'
             m='1'
-            border='2px'
             align='center'
             justifyContent='center'
-            rounded='md'
           >
-            <Text fontSize='6xl' fontWeight='extrabold'>
+            <Text fontSize='4xl' fontWeight='extrabold'>
               {char}
             </Text>
           </Box>
@@ -27,7 +25,7 @@ const Word = ({ word }) => {
 const WordList = ({ words }) => {
   return (
     <div>
-      {words.map((word, idx) => {
+      {words?.map((word, idx) => {
         // return <p key={word}>{word}</p>;
         if (idx < 50) return <Word key={word} word={word} />;
       })}
