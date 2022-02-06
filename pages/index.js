@@ -4,35 +4,35 @@ import Header from '../components/Header';
 import WordSearch from '../components/WordSearch';
 import styles from '../styles/Home.module.css';
 import { VALIDWORDS } from '../public/5-words';
-import { Heading } from '@chakra-ui/react';
+import { Button, Heading, Box } from '@chakra-ui/react';
 import WordList from '../components/WordList';
 import { useState, useEffect } from 'react';
 
 export default function Home() {
   const [ guesses, setGuesses ] = useState(VALIDWORDS);
-  const [ value1, setValue1 ] = useState('');
-  const [ value2, setValue2 ] = useState('');
-  const [ value3, setValue3 ] = useState('');
-  const [ value4, setValue4 ] = useState('');
-  const [ value5, setValue5 ] = useState('');
+  const [ inputVal, setInputVal ] = useState('-----');
 
   useEffect(
     () => {
       setGuesses(
         VALIDWORDS.filter((word) => {
           if (
-            (word[0] === value1 || value1 === '') &&
-            (word[1] === value2 || value2 === '') &&
-            (word[2] === value3 || value3 === '') &&
-            (word[3] === value4 || value4 === '') &&
-            (word[4] === value5 || value5 === '')
+            (word[0] === inputVal[0] || inputVal[0] === '-') &&
+            (word[1] === inputVal[1] || inputVal[1] === '-') &&
+            (word[2] === inputVal[2] || inputVal[2] === '-') &&
+            (word[3] === inputVal[3] || inputVal[3] === '-') &&
+            (word[4] === inputVal[4] || inputVal[4] === '-')
           )
             return true;
         })
       );
     },
-    [ value1, value2, value3, value4, value5 ]
+    [ inputVal ]
   );
+
+  const clearInput = () => {
+    setInputVal('-----');
+  };
 
   return (
     <div className={styles.container}>
@@ -46,22 +46,18 @@ export default function Home() {
       <main className={styles.main}>
         <h1 className={styles.title}>Enter word below!</h1>
 
-        <div className={styles.grid}>
-          <div className={styles.box}>
-            <WordSearch value={value1} setValue={setValue1} />
+        <div>
+          <div className={styles.grid}>
+            <div className={styles.card}>
+              <WordSearch value={inputVal} setValue={setInputVal} />
+            </div>
           </div>
-          <div className={styles.box}>
-            <WordSearch value={value2} setValue={setValue2} />
-          </div>
-          <div className={styles.box}>
-            <WordSearch value={value3} setValue={setValue3} />
-          </div>
-          <div className={styles.box}>
-            <WordSearch value={value4} setValue={setValue4} />
-          </div>
-          <div className={styles.box}>
-            <WordSearch value={value5} setValue={setValue5} />
-          </div>
+
+          <Box mt='2' display='flex' justifyContent='center'>
+            <Button variant='outline' colorScheme='red' onClick={clearInput}>
+              Clear
+            </Button>
+          </Box>
         </div>
 
         <p className={styles.description}>
@@ -69,48 +65,11 @@ export default function Home() {
         </p>
 
         <WordList words={guesses} setGuesses={setGuesses} />
-
-        {/* <div className={styles.grid}>
-          <a href='https://nextjs.org/docs' className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href='https://nextjs.org/learn' className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href='https://github.com/vercel/next.js/tree/canary/examples'
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href='https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div> */}
       </main>
 
       <footer className={styles.footer}>
-        <a
-          href='https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src='/vercel.svg' alt='Vercel Logo' width={72} height={16} />
-          </span>
+        <a href='https://google.com' target='_blank' rel='noopener noreferrer'>
+          Made by jz
         </a>
       </footer>
     </div>
