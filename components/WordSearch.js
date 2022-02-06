@@ -13,6 +13,7 @@ const WordSearch = ({ value, setValue }) => {
         onChange={handleChange}
         manageFocus='false'
         defaultValue='-----'
+        size='lg'
       >
         <PinInputField />
         <PinInputField />
@@ -21,7 +22,6 @@ const WordSearch = ({ value, setValue }) => {
         <PinInputField />
       </PinInput>
     </HStack>
-    // <Input value={value} onChange={handleChange} maxLength='1' />
   );
 };
 

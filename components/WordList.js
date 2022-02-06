@@ -14,13 +14,7 @@ const Word = ({ word }) => {
             justifyContent='center'
             rounded='md'
           >
-            <Text
-              //   bgGradient='linear(to-l, #7928CA, #FF0080)'
-              bg='white'
-              bgClip='text'
-              fontSize='6xl'
-              fontWeight='extrabold'
-            >
+            <Text fontSize='6xl' fontWeight='extrabold'>
               {char}
             </Text>
           </Box>
