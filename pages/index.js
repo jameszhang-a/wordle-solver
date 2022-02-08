@@ -107,7 +107,7 @@ export default function Home() {
       <main className={styles.main}>
         <h1 className={styles.title}>Wordle Solver</h1>
 
-        <div>
+        <div className={styles.mainApp}>
           <Text mb='8px'>
             Input{' '}
             <Text as='span' color='green.500'>

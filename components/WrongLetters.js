@@ -49,7 +49,6 @@ const WrongLetters = ({ wrongLetters, setWrongLetters }) => {
           break;
       }
       setWrongLetters(newObj);
-      console.log(newObj);
     }
   };
 

@@ -27,7 +27,7 @@ const WordList = ({ words }) => {
     <div>
       {words?.map((word, idx) => {
         // return <p key={word}>{word}</p>;
-        if (idx < 50) return <Word key={word} word={word} />;
+        if (idx < 100) return <Word key={word} word={word} />;
       })}
     </div>
   );

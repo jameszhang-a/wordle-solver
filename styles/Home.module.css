@@ -12,6 +12,10 @@
   align-items: center;
 }
 
+.mainApp {
+  margin: 1rem;
+}
+
 .footer {
   display: flex;
   flex: 1;
@@ -79,6 +83,12 @@
   min-height: 100px;
   text-align: center;
   margin: .5rem;
+}
+
+@media screen and (max-width: 600px) {
+  .inputBox {
+    min-height: 55px;
+  }
 }
 
 .card {
