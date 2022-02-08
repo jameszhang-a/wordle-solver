@@ -4,7 +4,7 @@ import { Button, Heading, Box, Text } from '@chakra-ui/react';
 
 // Consts
 import styles from '../styles/Home.module.css';
-import { VALIDWORDS } from '../public/5-words';
+import { VALIDWORDS } from '../public/5-letter-words';
 
 // Components
 import {
@@ -153,7 +153,7 @@ export default function Home() {
 
         {hasInput() && (
           <div className={styles.description}>
-            <p>matches</p>
+            <p>matches (sorted by frequency)</p>
           </div>
         )}
 

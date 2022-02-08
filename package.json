@@ -1,5 +1,13 @@
 {
   "name": "wordle-solver",
+  "version": "1.0.0",
+  "description": "A wordle solver built with next.js and Chakra ui",
+  "homepage": "https://github.com/jameszhang-a/wordle-solver",
+  "author": {
+    "name": "James Zhang",
+    "email": "jameszhanga@gmail.com",
+    "url": "https://wordlesolved.vercel.app/"
+  },
   "private": true,
   "scripts": {
     "dev": "next dev",
