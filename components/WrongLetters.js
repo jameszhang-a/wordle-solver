@@ -3,51 +3,13 @@ import styles from '../styles/Home.module.css';
 
 const WrongLetters = ({ wrongLetters, setWrongLetters }) => {
   const handleChange = (e, idx) => {
-    const valid = /^[A-Za-z]*$/.test(e.target.value);
-
-    // Have no idea why I can't just do {idx: e.target.value}??
-    // this seems so messy but i guess it works
-    if (valid) {
-      let newObj;
-      switch (idx) {
-        case 'first':
-          newObj = {
-            ...wrongLetters,
-            first : e.target.value
-          };
-          break;
-
-        case 'second':
-          newObj = {
-            ...wrongLetters,
-            second : e.target.value
-          };
-          break;
-
-        case 'third':
-          newObj = {
-            ...wrongLetters,
-            third : e.target.value
-          };
-          break;
-
-        case 'fourth':
-          newObj = {
-            ...wrongLetters,
-            fourth : e.target.value
-          };
-          break;
-
-        case 'fifth':
-          newObj = {
-            ...wrongLetters,
-            fifth : e.target.value
-          };
-          break;
-
-        default:
-          break;
-      }
+    const value = e.target.value;
+    const isLetter = /^[A-Za-z]*$/.test(value);
+    if (isLetter) {
+      const newObj = {
+        ...wrongLetters,
+        [idx] : value
+      };
       setWrongLetters(newObj);
     }
   };
